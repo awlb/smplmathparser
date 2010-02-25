@@ -1,4 +1,4 @@
-package main;
+package net.smplmathparse;
 
 import java.util.HashMap;
 import java.util.Map;

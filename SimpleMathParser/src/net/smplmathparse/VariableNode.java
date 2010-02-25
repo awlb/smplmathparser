@@ -1,4 +1,4 @@
-package main;
+package net.smplmathparse;
 
 /**
  * Class representing a variable node in a evaluation tree

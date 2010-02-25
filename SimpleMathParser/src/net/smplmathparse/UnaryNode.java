@@ -1,4 +1,4 @@
-package main;
+package net.smplmathparse;
 
 /**
  * Class representing a unary operator node in a evaluation tree

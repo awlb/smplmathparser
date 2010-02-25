@@ -1,4 +1,4 @@
-package main;
+package net.smplmathparse;
 
 /**
  * Class used to represent a unary operator

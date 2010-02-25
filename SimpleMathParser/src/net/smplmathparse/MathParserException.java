@@ -1,4 +1,4 @@
-package main;
+package net.smplmathparse;
 
 @SuppressWarnings("serial")
 public class MathParserException extends Exception {

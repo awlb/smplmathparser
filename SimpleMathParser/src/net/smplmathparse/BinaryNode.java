@@ -1,4 +1,4 @@
-package main;
+package net.smplmathparse;
 
 /**
  * Class representing a binary operator node in a evaluation tree
