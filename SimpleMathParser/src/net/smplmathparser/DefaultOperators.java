@@ -30,6 +30,13 @@ public class DefaultOperators {
 				return a / b;
 			}
 		});
+		// modulus operator
+		parser.addBinaryOperator(new BinaryOperator('%', 3, false) {
+			@Override
+			public double evaluate(double a, double b) {
+				return a % b;
+			}
+		});
 		// power operator
 		parser.addBinaryOperator(new BinaryOperator('^', 2, false) {
 			@Override
@@ -99,6 +106,41 @@ public class DefaultOperators {
 			@Override
 			public double evaluate(double a) {
 				return Math.tanh(a);
+			}
+		});
+		// exponential operator
+		parser.addUnaryOperator(new UnaryOperator("exp", 1) {
+			@Override
+			public double evaluate(double a) {
+				return Math.exp(a);
+			}
+		});
+		// natural log
+		parser.addUnaryOperator(new UnaryOperator("ln", 1) {
+			@Override
+			public double evaluate(double a) {
+				return Math.log(a);
+			}
+		});
+		// square root
+		parser.addUnaryOperator(new UnaryOperator("sqrt", 1) {
+			@Override
+			public double evaluate(double a) {
+				return Math.sqrt(a);
+			}
+		});
+		// cube root
+		parser.addUnaryOperator(new UnaryOperator("cbrt", 1) {
+			@Override
+			public double evaluate(double a) {
+				return Math.cbrt(a);
+			}
+		});
+		// log operator (log10)
+		parser.addUnaryOperator(new UnaryOperator("log", 1) {
+			@Override
+			public double evaluate(double a) {
+				return Math.log10(a);
 			}
 		});
 		// unary sign operators
