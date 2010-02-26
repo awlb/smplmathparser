@@ -1,6 +1,38 @@
+/*	Copyright (C) 2010  Alex Barfoot
+ 
+ 	This file is part of SimpleMathParser.
+
+    SimpleMathParser is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SimpleMathParser is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SimpleMathParser.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package net.smplmathparser;
 
+/**
+ * Class containing methods that add a default set of operators to a math parser
+ * 
+ * @author Alex Barfoot
+ * 
+ */
+
 public class DefaultOperators {
+
+	/**
+	 * Adds a set of binary operators to the default list of a math parser
+	 * 
+	 * @param parser
+	 *            The parser these binary operators are to be added to
+	 */
 	public static void addDefaultBinaryOperators(MathParser parser) {
 		// addition operator
 		parser.addBinaryOperator(new BinaryOperator('+', 4, true) {
@@ -46,11 +78,23 @@ public class DefaultOperators {
 		});
 	}
 
+	/**
+	 * Adds a set of constants to the default list of a math parser
+	 * 
+	 * @param parser
+	 *            The parser these constants are to be added to
+	 */
 	public static void addDefaultConstants(MathParser parser) {
 		parser.addConstant(new Constant("PI", Math.PI));
 		parser.addConstant(new Constant("E", Math.E));
 	}
 
+	/**
+	 * Adds a set of unary operators to the default list of a math parser
+	 * 
+	 * @param parser
+	 *            The parser these unary operators are to be added to
+	 */
 	public static void addDefaultUnaryOperators(MathParser parser) {
 		// Trigonometric functions
 		parser.addUnaryOperator(new UnaryOperator("cos", 1) {

@@ -60,8 +60,8 @@ public class EvaluationTree {
 	 * @param constants
 	 *            The constants to be used by this evaluation tree
 	 * @param function
-	 *            The string representing the mathematical function to parsed into
-	 *            a tree
+	 *            The string representing the mathematical function to parsed
+	 *            into a tree
 	 * @throws MathParserException
 	 * 
 	 */
