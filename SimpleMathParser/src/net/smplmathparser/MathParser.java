@@ -61,7 +61,7 @@ public class MathParser {
 	public EvaluationTree parse(String function) throws MathParserException {
 		function = preParse(function);
 		EvaluationTree tree = new EvaluationTree(defaultBinaryOperators,
-				defaultUnaryOperators, function);
+				defaultUnaryOperators, defaultConstants, function);
 		return tree;
 	}
 

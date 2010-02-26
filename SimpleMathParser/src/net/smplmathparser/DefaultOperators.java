@@ -47,9 +47,10 @@ public class DefaultOperators {
 	}
 
 	public static void addDefaultConstants(MathParser parser) {
-		parser.addConstant(new Constant("PI",Math.PI));
-		parser.addConstant(new Constant("E",Math.E));
+		parser.addConstant(new Constant("PI", Math.PI));
+		parser.addConstant(new Constant("E", Math.E));
 	}
+
 	public static void addDefaultUnaryOperators(MathParser parser) {
 		// Trigonometric functions
 		parser.addUnaryOperator(new UnaryOperator("cos", 1) {

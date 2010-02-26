@@ -57,26 +57,30 @@ public class EvaluationTree {
 	 *            The binary operators to be used by this evaluation tree
 	 * @param unaryOperators
 	 *            The unary operators to be used by this evaluation tree
+	 * @param constants
+	 *            The constants to be used by this evaluation tree
 	 * @param function
-	 *            The string represeting the mathmatical function to parsed into
+	 *            The string representing the mathematical function to parsed into
 	 *            a tree
 	 * @throws MathParserException
 	 * 
 	 */
 	public EvaluationTree(Map<Character, BinaryOperator> binaryOperators,
-			Map<String, UnaryOperator> unaryOperators, String function)
+			Map<String, UnaryOperator> unaryOperators,
+			Map<String, Constant> constants, String function)
 			throws MathParserException {
 		// set operators to defaults provided by MathParser
 		this.binaryOperators = binaryOperators;
 		this.unaryOperators = unaryOperators;
+		this.constants = constants;
 		// get root node by parsing function
 		root = parse(function);
 	}
 
 	/**
-	 * Evaluate this tree using the currently set varible values
+	 * Evaluate this tree using the currently set variable values
 	 * 
-	 * @return The result from the evalution of the tree
+	 * @return The result from the evaluation of the tree
 	 */
 	public double evaluate() {
 		return root.evaluate();
