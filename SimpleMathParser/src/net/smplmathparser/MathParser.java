@@ -37,65 +37,18 @@ public class MathParser {
 	 * The default unary operators
 	 */
 	private Map<String, UnaryOperator> defaultUnaryOperators = new HashMap<String, UnaryOperator>();
+	/**
+	 * The default unary constants
+	 */
+	private Map<String, Constant> defaultConstants = new HashMap<String, Constant>();
 
 	/**
 	 * Initialise the math parser
 	 */
 	public MathParser() {
-		addBinaryOperator(new BinaryOperator('+', 4, true) {
-			@Override
-			public double evaluate(double a, double b) {
-				return a + b;
-			}
-		});
-		addBinaryOperator(new BinaryOperator('-', 4, true) {
-			@Override
-			public double evaluate(double a, double b) {
-				return a - b;
-			}
-		});
-		addBinaryOperator(new BinaryOperator('*', 3, false) {
-			@Override
-			public double evaluate(double a, double b) {
-				return a * b;
-			}
-		});
-		addBinaryOperator(new BinaryOperator('^', 2, false) {
-			@Override
-			public double evaluate(double a, double b) {
-				return Math.pow(a, b);
-			}
-		});
-		addUnaryOperator(new UnaryOperator("cos", 1) {
-			@Override
-			public double evaluate(double a) {
-				return Math.cos(a);
-			}
-		});
-		addUnaryOperator(new UnaryOperator("sin", 1) {
-			@Override
-			public double evaluate(double a) {
-				return Math.cos(a);
-			}
-		});
-		addUnaryOperator(new UnaryOperator("tan", 1) {
-			@Override
-			public double evaluate(double a) {
-				return Math.cos(a);
-			}
-		});
-		addUnaryOperator(new UnaryOperator("-", 1) {
-			@Override
-			public double evaluate(double a) {
-				return -a;
-			}
-		});
-		addUnaryOperator(new UnaryOperator("+", 1) {
-			@Override
-			public double evaluate(double a) {
-				return +a;
-			}
-		});
+		DefaultOperators.addDefaultBinaryOperators(this);
+		DefaultOperators.addDefaultConstants(this);
+		DefaultOperators.addDefaultUnaryOperators(this);
 	}
 
 	/**
@@ -140,7 +93,7 @@ public class MathParser {
 	}
 
 	/**
-	 * Add a binary operator to the default set
+	 * Add a unary operator to the default set
 	 * 
 	 * @param unaryOperator
 	 *            The unary operator to be added
@@ -148,6 +101,16 @@ public class MathParser {
 	public void addUnaryOperator(UnaryOperator unaryOperator) {
 		defaultUnaryOperators.put(unaryOperator.getOperatorString(),
 				unaryOperator);
+	}
+
+	/**
+	 * Add a constant to the default set
+	 * 
+	 * @param constant
+	 *            The constant to be added
+	 */
+	public void addConstant(Constant constant) {
+		defaultConstants.put(constant.getName(), constant);
 	}
 
 	/**
