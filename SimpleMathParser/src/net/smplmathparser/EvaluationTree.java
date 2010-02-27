@@ -297,4 +297,15 @@ public class EvaluationTree {
 					.toString());
 		}
 	}
+
+	/**
+	 * Method to indicate if an evaluation trees value is always constant
+	 * 
+	 * @return True if evaluation trees values is always constant or false
+	 *         otherwise
+	 */
+	public boolean isConstant() {
+		boolean isConstant = variables.size() == 0;
+		return isConstant;
+	}
 }
