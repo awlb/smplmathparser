@@ -128,7 +128,7 @@ public class EvaluationTree {
 						 * a special case for unary operators that are
 						 * represented by a binary operator char
 						 */
-						lastOpPos = i + 1;
+						lastOpPos = i;
 						/*
 						 * set highest precedence unary operator to found one if
 						 * its precedence is higher or current op is null
@@ -152,7 +152,7 @@ public class EvaluationTree {
 					 * must be unary Its not possible for it to be the most
 					 * precedent operator so just set it as the last one
 					 */
-					lastOpPos = i + 1;
+					lastOpPos = i;
 				} else {
 					/*
 					 * Binary operator has been found Check if it must be set as
