@@ -73,11 +73,21 @@ public class MathParser {
 	 * @return The string preParsed ready for parsing
 	 */
 	private String preParse(String function) {
-		if (function.contains("=")) {
+		if (function.contains("=")) {	
 			// strip off = sign and anything before if user has include it
 			int equalIndex = function.indexOf('=');
 			function = function.substring(equalIndex + 1);
 		}
+		// trim leading and trailing spaces 
+		function = function.trim();
+		// strip out spaces
+		StringBuilder functionBuilder = new StringBuilder();
+		for(int i = 0; i < function.length(); i++) {
+			if(!(function.charAt(i) == ' ')){
+				functionBuilder.append(function.charAt(i));
+			}
+		}
+		function = functionBuilder.toString();
 		return function;
 	}
 
