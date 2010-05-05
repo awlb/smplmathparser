@@ -1,6 +1,6 @@
 /*	Copyright (C) 2010  Alex Barfoot
  
- 	This file is part of SimpleMathParser.
+ 	This file is part of SimpleMathParser http://smplmathparse.sourceforge.net/.
 
     SimpleMathParser is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,9 +18,16 @@
 
 package net.smplmathparser;
 
+/**
+ * Simple test class
+ * 
+ * @author Alex Barfoot
+ * 
+ */
+
 public class MathParserTester {
 	public static void main(String[] args) {
-		String function = "y = sin( x )";
+		String function = "y = ~x";
 		MathParser parser = new MathParser();
 		try {
 			EvaluationTree tree = parser.parse(function);

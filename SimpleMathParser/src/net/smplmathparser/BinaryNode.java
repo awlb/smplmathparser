@@ -1,6 +1,6 @@
 /*	Copyright (C) 2010  Alex Barfoot
  
- 	This file is part of SimpleMathParser.
+ 	This file is part of SimpleMathParser http://smplmathparse.sourceforge.net/.
 
     SimpleMathParser is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -56,16 +56,22 @@ public class BinaryNode extends EvaluationNode {
 			EvaluationTree parent) throws MathParserException {
 
 		this.operator = operator;
+		// get expression left of operator
 		String leftStr = function.substring(0, pos);
+		// get expression right of operator
 		String rightStr = function.substring(pos + 1, function.length());
+		// parse these two expressions
 		parameter1 = parent.parse(leftStr);
 		parameter2 = parent.parse(rightStr);
 	}
 
 	@Override
 	public double evaluate() {
+		// evaluate parameter one expression
 		double parameter1Value = parameter1.evaluate();
+		// evaluate parameter two expression
 		double parameter2Value = parameter2.evaluate();
+		// evaluate operator with these two found values
 		double value = operator.evaluate(parameter1Value, parameter2Value);
 		return value;
 	}

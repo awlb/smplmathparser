@@ -1,6 +1,6 @@
 /*	Copyright (C) 2010  Alex Barfoot
  
- 	This file is part of SimpleMathParser.
+ 	This file is part of SimpleMathParser http://smplmathparse.sourceforge.net/.
 
     SimpleMathParser is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -199,6 +199,12 @@ public class DefaultOperators {
 			@Override
 			public double evaluate(double a) {
 				return +a;
+			}
+		});
+		parser.addUnaryOperator(new UnaryOperator("~", 1) {
+			@Override
+			public double evaluate(double a) {
+				return a * Math.random();
 			}
 		});
 		parser.addUnaryOperator(new UnaryOperator("abs", 1) {

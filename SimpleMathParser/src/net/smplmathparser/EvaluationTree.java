@@ -1,6 +1,6 @@
 /*	Copyright (C) 2010  Alex Barfoot
  
- 	This file is part of SimpleMathParser.
+ 	This file is part of SimpleMathParser http://smplmathparse.sourceforge.net/.
 
     SimpleMathParser is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -100,7 +100,7 @@ public class EvaluationTree {
 		// the current highest precedence unary operator found
 		UnaryOperator uniOperator = null;
 		// the position of the current precedent operator
-		int precedentOpPos = 0;
+		int precedentOpPos = -1;
 		// position of the last found operator
 		int lastOpPos = 0;
 		// current bracket depth
@@ -108,12 +108,12 @@ public class EvaluationTree {
 		// array form of the function
 		char[] charFunc = functionPtr.toCharArray();
 		// loop through the characters in the function
-		for (int i = 0; i < charFunc.length; i++) {
+		for (int funcStrIndex = 0; funcStrIndex < charFunc.length; funcStrIndex++) {
 			// get current char being parsed
-			char currentChar = charFunc[i];
+			char currentChar = charFunc[funcStrIndex];
 			// check if the current char is a binary operator
 			if (binaryOperators.containsKey(currentChar) && bracketDepth == 0) {
-				if (i == 0) {
+				if (funcStrIndex == 0) {
 					/*
 					 * If operator is at position 0 it must also be a unary one
 					 * If this is not the case there must be an error in the
@@ -121,60 +121,58 @@ public class EvaluationTree {
 					 */
 					if (binaryOperators.get(currentChar).isAlsoUnary()) {
 						// create unary operator
-						UnaryOperator tempUniOperator = unaryOperators.get(""
-								+ currentChar);
+						UnaryOperator tempUniOperator = unaryOperators
+								.get(String.valueOf(currentChar));
 						/*
-						 * set the position of the last operator to i+1 this is
-						 * a special case for unary operators that are
-						 * represented by a binary operator char
+						 * update the position of the last operator
 						 */
-						lastOpPos = i;
+						lastOpPos = funcStrIndex;
 						/*
 						 * set highest precedence unary operator to found one if
 						 * its precedence is higher or current op is null
 						 */
 						if (uniOperator == null) {
 							uniOperator = tempUniOperator;
-							precedentOpPos = i;
+							precedentOpPos = funcStrIndex;
 						} else if (tempUniOperator.getPrecedence() > uniOperator
 								.getPrecedence()) {
 							uniOperator = tempUniOperator;
-							precedentOpPos = i;
+							precedentOpPos = funcStrIndex;
 						}
 					} else {
 						throw new MathParserException(
 								"Found binary operator where unary was expected",
 								functionPtr);
 					}
-				} else if (lastOpPos == i - 1 && lastOpPos > 0) {
+				} else if (lastOpPos == funcStrIndex - 1 && lastOpPos > 0) {
 					/*
 					 * If a operator is directly right of a binary operator it
 					 * must be unary Its not possible for it to be the most
 					 * precedent operator so just set it as the last one
 					 */
-					lastOpPos = i;
+					lastOpPos = funcStrIndex;
 				} else {
 					/*
 					 * Binary operator has been found Check if it must be set as
 					 * the most precedent one
 					 */
-					lastOpPos = i;
+					lastOpPos = funcStrIndex;
 					BinaryOperator tempBinOperator = binaryOperators
 							.get(currentChar);
 					if (binOperator == null) {
 						binOperator = tempBinOperator;
-						precedentOpPos = i;
+						precedentOpPos = funcStrIndex;
 					} else if (tempBinOperator.getPrecedence() > binOperator
 							.getPrecedence()) {
 						binOperator = tempBinOperator;
-						precedentOpPos = i;
+						precedentOpPos = funcStrIndex;
 					}
 				}
 			} else if (currentChar == '(') {
 				/*
 				 * Bracket was found indicating a probable unary operator
 				 */
-				if (i != 0) {
+				if (funcStrIndex != 0) {
 					/*
 					 * As bracket was not at position 0 we can assume the string
 					 * between last last found operator and this bracket is a
@@ -187,17 +185,18 @@ public class EvaluationTree {
 						 * already exist. Also don't set if there is currently a
 						 * unary operator of higher precedence.
 						 */
-						String unaryOp = functionPtr.substring(lastOpPos, i);
+						String unaryOp = functionPtr.substring(lastOpPos,
+								funcStrIndex);
 						UnaryOperator tempUniOperator = unaryOperators
 								.get(unaryOp);
 						if (tempUniOperator != null) {
 							if (uniOperator == null) {
 								uniOperator = tempUniOperator;
-								precedentOpPos = i;
+								precedentOpPos = funcStrIndex;
 							} else if (tempUniOperator.getPrecedence() > uniOperator
 									.getPrecedence()) {
 								uniOperator = tempUniOperator;
-								precedentOpPos = i;
+								precedentOpPos = funcStrIndex;
 							}
 						} else {
 							throw new MathParserException(
@@ -216,7 +215,7 @@ public class EvaluationTree {
 						uniOperator = tempUniOperator;
 						// function string must be updated with the added +
 						functionPtr = "+" + functionPtr;
-						i++;
+						funcStrIndex++;
 						charFunc = functionPtr.toCharArray();
 					}
 				}
@@ -225,6 +224,35 @@ public class EvaluationTree {
 			} else if (currentChar == ')') {
 				// decrease bracket depth as an closing one was found
 				bracketDepth--;
+			} else if (unaryOperators.containsKey(String.valueOf(currentChar))) {
+				/*
+				 * This indicates a single character unary operator that is not
+				 * a binary one. None of the these exist by default but the user
+				 * could define some.
+				 */
+
+				// create unary operator
+				UnaryOperator tempUniOperator = unaryOperators.get(String
+						.valueOf(currentChar));
+				/*
+				 * update the position of the last operator
+				 */
+				lastOpPos = funcStrIndex;
+				// set found unary operator as precedent one if needed
+				if (uniOperator == null) {
+					uniOperator = tempUniOperator;
+					// update precedent position if needed
+					if (binOperator == null) {
+						precedentOpPos = funcStrIndex;
+					}
+				} else if (tempUniOperator.getPrecedence() > uniOperator
+						.getPrecedence()) {
+					uniOperator = tempUniOperator;
+					// update precedent position if needed
+					if (binOperator == null) {
+						precedentOpPos = funcStrIndex;
+					}
+				}
 			}
 		}
 		/*
@@ -307,5 +335,30 @@ public class EvaluationTree {
 	public boolean isConstant() {
 		boolean isConstant = variables.size() == 0;
 		return isConstant;
+	}
+	
+	/**
+	 * Method used to get a list of the constants used in a tree
+	 * NOTE: this will include numeric constants as well
+	 * 
+	 * @return The list of Constants in array form
+	 */
+	public Constant[] getConstantList() {
+		// convert map values to array and return
+		Constant[] constantArray = new Constant[constants.size()];
+		constantArray = constants.values().toArray(constantArray);
+		return constantArray;		
+	}
+
+	/**
+	 * Method used to get a list of the variables used in a tree
+	 * 
+	 * @return The list of Variables in array form
+	 */
+	public Variable[] getVariableList() {
+		// convert map values to array and return
+		Variable[] variableArray = new Variable[variables.size()];
+		variableArray = variables.values().toArray(variableArray);
+		return variableArray;
 	}
 }

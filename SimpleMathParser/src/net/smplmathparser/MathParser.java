@@ -1,6 +1,6 @@
 /*	Copyright (C) 2010  Alex Barfoot
  
- 	This file is part of SimpleMathParser.
+ 	This file is part of SimpleMathParser http://smplmathparse.sourceforge.net/.
 
     SimpleMathParser is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -73,17 +73,17 @@ public class MathParser {
 	 * @return The string preParsed ready for parsing
 	 */
 	private String preParse(String function) {
-		if (function.contains("=")) {	
+		if (function.contains("=")) {
 			// strip off = sign and anything before if user has include it
 			int equalIndex = function.indexOf('=');
 			function = function.substring(equalIndex + 1);
 		}
-		// trim leading and trailing spaces 
+		// trim leading and trailing spaces
 		function = function.trim();
 		// strip out spaces
 		StringBuilder functionBuilder = new StringBuilder();
-		for(int i = 0; i < function.length(); i++) {
-			if(!(function.charAt(i) == ' ')){
+		for (int i = 0; i < function.length(); i++) {
+			if (!(function.charAt(i) == ' ')) {
 				functionBuilder.append(function.charAt(i));
 			}
 		}
