@@ -201,12 +201,6 @@ public class DefaultOperators {
 				return +a;
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("~", 1) {
-			@Override
-			public double evaluate(double a) {
-				return a * Math.random();
-			}
-		});
 		parser.addUnaryOperator(new UnaryOperator("abs", 1) {
 			@Override
 			public double evaluate(double a) {

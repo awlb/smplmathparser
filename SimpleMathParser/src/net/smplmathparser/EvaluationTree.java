@@ -87,6 +87,42 @@ public class EvaluationTree {
 	}
 
 	/**
+	 * Method used to get a list of the constants used in a tree NOTE: this will
+	 * include numeric constants as well
+	 * 
+	 * @return The list of Constants in array form
+	 */
+	public Constant[] getConstantList() {
+		// convert map values to array and return
+		Constant[] constantArray = new Constant[constants.size()];
+		constantArray = constants.values().toArray(constantArray);
+		return constantArray;
+	}
+
+	/**
+	 * Method used to get a list of the variables used in a tree
+	 * 
+	 * @return The list of Variables in array form
+	 */
+	public Variable[] getVariableList() {
+		// convert map values to array and return
+		Variable[] variableArray = new Variable[variables.size()];
+		variableArray = variables.values().toArray(variableArray);
+		return variableArray;
+	}
+
+	/**
+	 * Method to indicate if an evaluation trees value is always constant
+	 * 
+	 * @return True if evaluation trees values is always constant or false
+	 *         otherwise
+	 */
+	public boolean isConstant() {
+		boolean isConstant = variables.size() == 0;
+		return isConstant;
+	}
+
+	/**
 	 * Parse a function part and produce a Evaluation node that represents it
 	 * 
 	 * @param functionPtr
@@ -324,41 +360,5 @@ public class EvaluationTree {
 			throw new MathParserException("Variable not found: " + name, this
 					.toString());
 		}
-	}
-
-	/**
-	 * Method to indicate if an evaluation trees value is always constant
-	 * 
-	 * @return True if evaluation trees values is always constant or false
-	 *         otherwise
-	 */
-	public boolean isConstant() {
-		boolean isConstant = variables.size() == 0;
-		return isConstant;
-	}
-	
-	/**
-	 * Method used to get a list of the constants used in a tree
-	 * NOTE: this will include numeric constants as well
-	 * 
-	 * @return The list of Constants in array form
-	 */
-	public Constant[] getConstantList() {
-		// convert map values to array and return
-		Constant[] constantArray = new Constant[constants.size()];
-		constantArray = constants.values().toArray(constantArray);
-		return constantArray;		
-	}
-
-	/**
-	 * Method used to get a list of the variables used in a tree
-	 * 
-	 * @return The list of Variables in array form
-	 */
-	public Variable[] getVariableList() {
-		// convert map values to array and return
-		Variable[] variableArray = new Variable[variables.size()];
-		variableArray = variables.values().toArray(variableArray);
-		return variableArray;
 	}
 }

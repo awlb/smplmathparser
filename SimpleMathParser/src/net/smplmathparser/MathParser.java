@@ -30,6 +30,22 @@ import java.util.Map;
 
 public class MathParser {
 	/**
+	 * Method used to check if a string is a number
+	 * 
+	 * @param numStr
+	 *            The string to be tested
+	 * @return Returns true if string represents a number otherwise false
+	 */
+	public static boolean isNumeric(String numStr) {
+		try {
+			Double.parseDouble(numStr);
+			return true;
+		} catch (NumberFormatException e) {
+			// numStr is not numeric
+			return false;
+		}
+	}
+	/**
 	 * The default binary operators *
 	 */
 	private Map<Character, BinaryOperator> defaultBinaryOperators = new HashMap<Character, BinaryOperator>();
@@ -37,6 +53,7 @@ public class MathParser {
 	 * The default unary operators
 	 */
 	private Map<String, UnaryOperator> defaultUnaryOperators = new HashMap<String, UnaryOperator>();
+
 	/**
 	 * The default unary constants
 	 */
@@ -49,6 +66,38 @@ public class MathParser {
 		DefaultOperators.addDefaultBinaryOperators(this);
 		DefaultOperators.addDefaultConstants(this);
 		DefaultOperators.addDefaultUnaryOperators(this);
+	}
+
+	/**
+	 * Add a binary operator to the default set
+	 * 
+	 * @param binaryOperator
+	 *            The binary operator to be added
+	 */
+	public void addBinaryOperator(BinaryOperator binaryOperator) {
+		defaultBinaryOperators.put(binaryOperator.getOperatorChar(),
+				binaryOperator);
+	}
+
+	/**
+	 * Add a constant to the default set
+	 * 
+	 * @param constant
+	 *            The constant to be added
+	 */
+	public void addConstant(Constant constant) {
+		defaultConstants.put(constant.getName(), constant);
+	}
+
+	/**
+	 * Add a unary operator to the default set
+	 * 
+	 * @param unaryOperator
+	 *            The unary operator to be added
+	 */
+	public void addUnaryOperator(UnaryOperator unaryOperator) {
+		defaultUnaryOperators.put(unaryOperator.getOperatorString(),
+				unaryOperator);
 	}
 
 	/**
@@ -89,54 +138,5 @@ public class MathParser {
 		}
 		function = functionBuilder.toString();
 		return function;
-	}
-
-	/**
-	 * Add a binary operator to the default set
-	 * 
-	 * @param binaryOperator
-	 *            The binary operator to be added
-	 */
-	public void addBinaryOperator(BinaryOperator binaryOperator) {
-		defaultBinaryOperators.put(binaryOperator.getOperatorChar(),
-				binaryOperator);
-	}
-
-	/**
-	 * Add a unary operator to the default set
-	 * 
-	 * @param unaryOperator
-	 *            The unary operator to be added
-	 */
-	public void addUnaryOperator(UnaryOperator unaryOperator) {
-		defaultUnaryOperators.put(unaryOperator.getOperatorString(),
-				unaryOperator);
-	}
-
-	/**
-	 * Add a constant to the default set
-	 * 
-	 * @param constant
-	 *            The constant to be added
-	 */
-	public void addConstant(Constant constant) {
-		defaultConstants.put(constant.getName(), constant);
-	}
-
-	/**
-	 * Method used to check if a string is a number
-	 * 
-	 * @param numStr
-	 *            The string to be tested
-	 * @return Returns true if string represents a number otherwise false
-	 */
-	public static boolean isNumeric(String numStr) {
-		try {
-			Double.parseDouble(numStr);
-			return true;
-		} catch (NumberFormatException e) {
-			// numStr is not numeric
-			return false;
-		}
 	}
 }
