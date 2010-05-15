@@ -27,7 +27,7 @@ package net.smplmathparser;
 
 public class MathParserTester {
 	public static void main(String[] args) {
-		String function = "y = ~x";
+		String function = "y = x";
 		MathParser parser = new MathParser();
 		try {
 			EvaluationTree tree = parser.parse(function);
