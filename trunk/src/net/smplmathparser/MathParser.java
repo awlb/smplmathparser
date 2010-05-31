@@ -45,19 +45,20 @@ public class MathParser {
 			return false;
 		}
 	}
+
 	/**
 	 * The default binary operators *
 	 */
 	private Map<Character, BinaryOperator> defaultBinaryOperators = new HashMap<Character, BinaryOperator>();
 	/**
-	 * The default unary operators
-	 */
-	private Map<String, UnaryOperator> defaultUnaryOperators = new HashMap<String, UnaryOperator>();
-
-	/**
 	 * The default unary constants
 	 */
 	private Map<String, Constant> defaultConstants = new HashMap<String, Constant>();
+
+	/**
+	 * The default unary operators
+	 */
+	private Map<String, UnaryOperator> defaultUnaryOperators = new HashMap<String, UnaryOperator>();
 
 	/**
 	 * Initialise the math parser
@@ -123,7 +124,7 @@ public class MathParser {
 	 */
 	private String preParse(String function) {
 		if (function.contains("=")) {
-			// strip off = sign and anything before if user has include it
+			// strip off = sign and anything before if user has included it
 			int equalIndex = function.indexOf('=');
 			function = function.substring(equalIndex + 1);
 		}

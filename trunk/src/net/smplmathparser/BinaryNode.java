@@ -27,6 +27,10 @@ package net.smplmathparser;
 
 public class BinaryNode extends EvaluationNode {
 	/**
+	 * The BinaryOperator for the operator to be performed
+	 */
+	private BinaryOperator operator;
+	/**
 	 * The first parameter for this binary operator
 	 */
 	private EvaluationNode parameter1;
@@ -34,10 +38,6 @@ public class BinaryNode extends EvaluationNode {
 	 * The second parameter for this binary operator
 	 */
 	private EvaluationNode parameter2;
-	/**
-	 * The BinaryOperator for the operator to be performed
-	 */
-	private BinaryOperator operator;
 
 	/**
 	 * Construct a binary node with the given operator
