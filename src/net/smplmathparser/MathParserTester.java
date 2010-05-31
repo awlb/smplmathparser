@@ -27,12 +27,32 @@ package net.smplmathparser;
 
 public class MathParserTester {
 	public static void main(String[] args) {
-		String function = "y = x";
 		MathParser parser = new MathParser();
 		try {
-			EvaluationTree tree = parser.parse(function);
-			tree.setVariable("x", 10);
-			System.out.println(tree.evaluate());
+			// test 1
+			String function1 = "y = 5";
+			EvaluationTree tree1 = parser.parse(function1);
+			System.out.println(function1);
+			System.out.println(tree1.evaluate());
+			System.out.println("Constant: " + tree1.isConstant());
+			// test 2
+			String function2 = "y = x";
+			EvaluationTree tree2 = parser.parse(function2);
+			tree2.setVariable("x", 10.5);
+			System.out.println(function2);
+			System.out.println(tree2.evaluate());
+			tree2.setVariable("x", 34);
+			System.out.println(tree2.evaluate());
+			System.out.println("Constant: " + tree2.isConstant());
+			// test 3
+			String function3 = "y = sin(x)^(z)";
+			EvaluationTree tree3 = parser.parse(function3);
+			tree3.setVariable("x", 20);
+			tree3.setVariable("z", 30);
+			System.out.println(function3);
+			System.out.println(tree3.evaluate());
+			System.out.println("Constant: " + tree3.isConstant());
+
 		} catch (MathParserException e) {
 			e.printStackTrace();
 		}

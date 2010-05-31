@@ -34,6 +34,18 @@ public class EvaluationTree {
 	 */
 	private Map<Character, BinaryOperator> binaryOperators = new HashMap<Character, BinaryOperator>();
 	/**
+	 * The constant names and values for this tree
+	 */
+	private Map<String, Constant> constants = new HashMap<String, Constant>();
+	/**
+	 * Value of the tree if it is constant
+	 */
+	double constantValue;
+	/**
+	 * The root node of this evaluation tree
+	 */
+	private EvaluationNode root;
+	/**
 	 * The unary operators of this tree
 	 */
 	private Map<String, UnaryOperator> unaryOperators = new HashMap<String, UnaryOperator>();
@@ -41,14 +53,6 @@ public class EvaluationTree {
 	 * The variable names and values for this tree
 	 */
 	private Map<String, Variable> variables = new HashMap<String, Variable>();
-	/**
-	 * The constant names and values for this tree
-	 */
-	private Map<String, Constant> constants = new HashMap<String, Constant>();
-	/**
-	 * The root node of this evaluation tree
-	 */
-	private EvaluationNode root;
 
 	/**
 	 * Initialise and build the evaluation tree
@@ -75,6 +79,32 @@ public class EvaluationTree {
 		this.constants = constants;
 		// get root node by parsing function
 		root = parse(function);
+		// check if evaluation will produce constant value
+		if (this.isConstant()) {
+			// store this constant value
+			constantValue = root.evaluate();
+		}
+	}
+	
+	/**
+	 * Method that decrements a variable in the evaluation tree by a given
+	 * value
+	 * 
+	 * @param name
+	 *            The name of the variable to be decremented
+	 * @param value
+	 *            The value the variable should be decremented by
+	 * @throws MathParserException
+	 */
+	public void decrementVariable(String name, double value)
+			throws MathParserException {
+		if (variables.containsKey(name)) {
+			double currentValue = variables.get(name).getValue();
+			variables.get(name).setValue(currentValue-value);
+		} else {
+			throw new MathParserException("Variable not found: " + name, this
+					.toString());
+		}
 	}
 
 	/**
@@ -83,7 +113,11 @@ public class EvaluationTree {
 	 * @return The result from the evaluation of the tree
 	 */
 	public double evaluate() {
-		return root.evaluate();
+		if (this.isConstant()) {
+			return constantValue;
+		} else {
+			return root.evaluate();
+		}
 	}
 
 	/**
@@ -112,12 +146,37 @@ public class EvaluationTree {
 	}
 
 	/**
+	 * Method that increments a variable in the evaluation tree by a given
+	 * value
+	 * 
+	 * @param name
+	 *            The name of the variable to be incremented
+	 * @param value
+	 *            The value the variable should be incremented by
+	 * @throws MathParserException
+	 */
+	public void incrementVariable(String name, double value)
+			throws MathParserException {
+		if (variables.containsKey(name)) {
+			double currentValue = variables.get(name).getValue();
+			variables.get(name).setValue(currentValue+value);
+		} else {
+			throw new MathParserException("Variable not found: " + name, this
+					.toString());
+		}
+	}
+
+	/**
 	 * Method to indicate if an evaluation trees value is always constant
 	 * 
 	 * @return True if evaluation trees values is always constant or false
 	 *         otherwise
 	 */
 	public boolean isConstant() {
+		/*
+		 * if there only constants and no variables evaluation will provide
+		 * constant value
+		 */
 		boolean isConstant = variables.size() == 0;
 		return isConstant;
 	}

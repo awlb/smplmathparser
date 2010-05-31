@@ -27,18 +27,20 @@ package net.smplmathparser;
 
 public class UnaryNode extends EvaluationNode {
 	/**
-	 * The parameter for this unary operator
-	 */
-	private EvaluationNode parameter;
-	/**
 	 * The UnaryOperator for the operator to be performed
 	 */
 	private UnaryOperator operator;
+	/**
+	 * The parameter for this unary operator
+	 */
+	private EvaluationNode parameter;
 
 	public UnaryNode(UnaryOperator operator, String function,
 			EvaluationTree parent) throws MathParserException {
+		// set operator
 		this.operator = operator;
 		String middleStr;
+		// get string of function operator is to be applied to
 		int start = function.indexOf("(");
 		int end = function.lastIndexOf(")");
 		if (start > -1 && end > -1
@@ -48,6 +50,7 @@ public class UnaryNode extends EvaluationNode {
 			middleStr = function.substring(operator.getOperatorString()
 					.length());
 		}
+		// parse string to get evaluation node operator will be applied to
 		parameter = parent.parse(middleStr);
 	}
 

@@ -26,6 +26,10 @@ package net.smplmathparser;
 
 public abstract class BinaryOperator {
 	/**
+	 * Indicates whether this operator is also a valid unary one
+	 */
+	private boolean alsoUnary;
+	/**
 	 * The character that represents this binary operator
 	 */
 	private char operatorChar;
@@ -33,10 +37,6 @@ public abstract class BinaryOperator {
 	 * The precedence of this binary operator
 	 */
 	private int precedence;
-	/**
-	 * Indicates whether this operator is also a valid unary one
-	 */
-	private boolean alsoUnary;
 
 	/**
 	 * Construct a binary operator with the given operator character and
