@@ -15,6 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with SimpleMathParser.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package net.smplmathparser;
 
 /**
@@ -24,7 +25,7 @@ package net.smplmathparser;
  * 
  */
 
-public abstract class BinaryOperator {
+public abstract class BinaryOperator extends Operator{
 	/**
 	 * Indicates whether this operator is also a valid unary one
 	 */
@@ -33,10 +34,6 @@ public abstract class BinaryOperator {
 	 * The character that represents this binary operator
 	 */
 	private char operatorChar;
-	/**
-	 * The precedence of this binary operator
-	 */
-	private int precedence;
 
 	/**
 	 * Construct a binary operator with the given operator character and
@@ -48,8 +45,8 @@ public abstract class BinaryOperator {
 	 *            The precedence of this binary operator
 	 */
 	public BinaryOperator(char operatorChar, int precedence, boolean alsoUnary) {
+		super(precedence);
 		this.operatorChar = operatorChar;
-		this.precedence = precedence;
 		this.alsoUnary = alsoUnary;
 	}
 
@@ -69,13 +66,6 @@ public abstract class BinaryOperator {
 	 */
 	public char getOperatorChar() {
 		return operatorChar;
-	}
-
-	/**
-	 * @return the precedence of this operator
-	 */
-	public int getPrecedence() {
-		return precedence;
 	}
 
 	/**

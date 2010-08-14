@@ -35,28 +35,28 @@ public class DefaultOperators {
 	 */
 	public static void addDefaultBinaryOperators(MathParser parser) {
 		// addition operator
-		parser.addBinaryOperator(new BinaryOperator('+', 4, true) {
+		parser.addBinaryOperator(new BinaryOperator('+', 6, true) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a + b;
 			}
 		});
 		// subtraction operator
-		parser.addBinaryOperator(new BinaryOperator('-', 4, true) {
+		parser.addBinaryOperator(new BinaryOperator('-', 6, true) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a - b;
 			}
 		});
 		// multiplication operator
-		parser.addBinaryOperator(new BinaryOperator('*', 3, false) {
+		parser.addBinaryOperator(new BinaryOperator('*', 5, false) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a * b;
 			}
 		});
 		// division operator
-		parser.addBinaryOperator(new BinaryOperator('/', 3, false) {
+		parser.addBinaryOperator(new BinaryOperator('/', 4, false) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a / b;
