@@ -35,6 +35,7 @@ public class MathParserTester {
 			System.out.println(function1);
 			System.out.println(tree1.evaluate());
 			System.out.println("Constant: " + tree1.isConstant());
+			System.out.println("------");
 			// test 2
 			String function2 = "y = x";
 			EvaluationTree tree2 = parser.parse(function2);
@@ -44,6 +45,7 @@ public class MathParserTester {
 			tree2.setVariable("x", 34);
 			System.out.println(tree2.evaluate());
 			System.out.println("Constant: " + tree2.isConstant());
+			System.out.println("------");
 			// test 3
 			String function3 = "y = sin(x)^(z)";
 			EvaluationTree tree3 = parser.parse(function3);
@@ -52,7 +54,7 @@ public class MathParserTester {
 			System.out.println(function3);
 			System.out.println(tree3.evaluate());
 			System.out.println("Constant: " + tree3.isConstant());
-
+			System.out.println("------");
 		} catch (MathParserException e) {
 			e.printStackTrace();
 		}
