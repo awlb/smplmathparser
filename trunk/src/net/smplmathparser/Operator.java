@@ -28,12 +28,8 @@ import java.io.Serializable;
  * 
  */
 
+@SuppressWarnings("serial")
 public class Operator implements Serializable {
-
-	/**
-	 * Serial Version UID
-	 */
-	private static final long serialVersionUID = -8526367439301015577L;
 	/**
 	 * The precedence of this operator
 	 */

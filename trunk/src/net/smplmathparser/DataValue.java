@@ -28,11 +28,8 @@ import java.io.Serializable;
  * 
  */
 
+@SuppressWarnings("serial")
 public class DataValue implements Serializable {
-	/**
-	 * Serial Version UID
-	 */
-	private static final long serialVersionUID = -4597106772850180750L;
 	/**
 	 * The string that represents the name of this data value
 	 */

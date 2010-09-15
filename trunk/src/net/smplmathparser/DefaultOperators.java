@@ -24,7 +24,7 @@ package net.smplmathparser;
  * @author Alex Barfoot
  * 
  */
-
+@SuppressWarnings("serial")
 public class DefaultOperators {
 	/**
 	 * Adds a set of binary operators to the default list of a math parser
