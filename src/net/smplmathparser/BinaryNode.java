@@ -25,11 +25,8 @@ package net.smplmathparser;
  * 
  */
 
+@SuppressWarnings("serial")
 public class BinaryNode extends EvaluationNode {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1891013317357691674L;
 	/**
 	 * The BinaryOperator for the operator to be performed
 	 */

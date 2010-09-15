@@ -25,11 +25,8 @@ package net.smplmathparser;
  * 
  */
 
+@SuppressWarnings("serial")
 public class ConstantNode extends EvaluationNode {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6007983239795201053L;
 	/**
 	 * The current constant for this node
 	 */
