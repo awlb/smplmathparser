@@ -18,32 +18,34 @@
 
 package net.smplmathparser;
 
+import java.io.Serializable;
+
 /**
- * Class representing a numerical constant node in a evaluation tree
+ * Class representing a data value such as variable or constant More specific
+ * types of data value will extend this
  * 
  * @author Alex Barfoot
  * 
  */
 
-public class ConstantNode extends EvaluationNode {
+public class DataValue implements Serializable {
 	/**
-	 * 
+	 * Serial Version UID
 	 */
-	private static final long serialVersionUID = 6007983239795201053L;
+	private static final long serialVersionUID = -4597106772850180750L;
 	/**
-	 * The current constant for this node
+	 * The string that represents the name of this data value
 	 */
-	private Constant value;
-
-	/**
-	 * Construct a constant node with the given constant
-	 */
-	public ConstantNode(Constant value) {
-		this.value = value;
+	private final String name;
+	
+	public DataValue(String name) {
+		this.name = name;
 	}
-
-	@Override
-	public double evaluate() {
-		return value.getValue();
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
 }

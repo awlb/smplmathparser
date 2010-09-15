@@ -18,6 +18,8 @@
 
 package net.smplmathparser;
 
+import java.io.Serializable;
+
 /**
  * Class representing a node in a evaluation tree
  * 
@@ -25,7 +27,11 @@ package net.smplmathparser;
  * 
  */
 
-public abstract class EvaluationNode {
+public abstract class EvaluationNode implements Serializable {
+	/**
+	 * Serial Version UID
+	 */
+	private static final long serialVersionUID = 2618640894320266872L;
 	/**
 	 * Indicates whether the node has a constant value or not
 	 */

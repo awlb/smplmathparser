@@ -27,6 +27,10 @@ package net.smplmathparser;
 
 public class VariableNode extends EvaluationNode {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7196821894528024L;
+	/**
 	 * The current variable for this node
 	 */
 	private Variable value;

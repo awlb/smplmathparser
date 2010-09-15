@@ -18,25 +18,31 @@
 
 package net.smplmathparser;
 
+import java.io.Serializable;
+
 /**
- * Class used to represent an operator
- * More specific types of operator will extend this
+ * Class used to represent an operator More specific types of operator will
+ * extend this
  * 
  * @author Alex Barfoot
  * 
  */
 
-public class Operator {
-	
+public class Operator implements Serializable {
+
+	/**
+	 * Serial Version UID
+	 */
+	private static final long serialVersionUID = -8526367439301015577L;
 	/**
 	 * The precedence of this operator
 	 */
 	private int precedence;
-	
+
 	public Operator(int precedence) {
 		this.precedence = precedence;
 	}
-	
+
 	/**
 	 * @return the precedence of this operator
 	 */
