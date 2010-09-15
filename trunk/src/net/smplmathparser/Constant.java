@@ -25,26 +25,19 @@ package net.smplmathparser;
  * 
  */
 
-public class Constant {
+public class Constant extends DataValue{
 	/**
-	 * The string that represents the name of this variable
+	 * Serial Version UID
 	 */
-	private final String name;
+	private static final long serialVersionUID = 1501002391434699927L;
 	/**
-	 * The current value of this variable
+	 * The value for this constant
 	 */
 	private final double value;
 
 	public Constant(String name, double value) {
-		this.name = name;
+		super(name);
 		this.value = value;
-	}
-
-	/**
-	 * @return the name of this constant
-	 */
-	public String getName() {
-		return name;
 	}
 
 	/**

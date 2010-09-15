@@ -25,11 +25,11 @@ package net.smplmathparser;
  * 
  */
 
-public class Variable {
+public class Variable extends DataValue{
 	/**
-	 * The string that represents the name of this variable
+	 * Serial Version UID
 	 */
-	private String name;
+	private static final long serialVersionUID = -6621276378216824276L;
 	/**
 	 * The current value of this variable
 	 */
@@ -42,14 +42,7 @@ public class Variable {
 	 *            The that variable will be identified by
 	 */
 	public Variable(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
+		super(name);
 	}
 
 	/**

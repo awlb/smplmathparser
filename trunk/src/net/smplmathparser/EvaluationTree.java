@@ -18,6 +18,7 @@
 
 package net.smplmathparser;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +29,11 @@ import java.util.Map;
  * 
  */
 
-public class EvaluationTree {
+public class EvaluationTree implements Serializable {
+	/**
+	 * Serial Version UID
+	 */
+	private static final long serialVersionUID = 5293967236846252736L;
 	/**
 	 * The binary operators of this tree
 	 */
@@ -85,10 +90,9 @@ public class EvaluationTree {
 			constantValue = root.evaluate();
 		}
 	}
-	
+
 	/**
-	 * Method that decrements a variable in the evaluation tree by a given
-	 * value
+	 * Method that decrements a variable in the evaluation tree by a given value
 	 * 
 	 * @param name
 	 *            The name of the variable to be decremented
@@ -100,7 +104,7 @@ public class EvaluationTree {
 			throws MathParserException {
 		if (variables.containsKey(name)) {
 			double currentValue = variables.get(name).getValue();
-			variables.get(name).setValue(currentValue-value);
+			variables.get(name).setValue(currentValue - value);
 		} else {
 			throw new MathParserException("Variable not found: " + name, this
 					.toString());
@@ -146,8 +150,7 @@ public class EvaluationTree {
 	}
 
 	/**
-	 * Method that increments a variable in the evaluation tree by a given
-	 * value
+	 * Method that increments a variable in the evaluation tree by a given value
 	 * 
 	 * @param name
 	 *            The name of the variable to be incremented
@@ -159,7 +162,7 @@ public class EvaluationTree {
 			throws MathParserException {
 		if (variables.containsKey(name)) {
 			double currentValue = variables.get(name).getValue();
-			variables.get(name).setValue(currentValue+value);
+			variables.get(name).setValue(currentValue + value);
 		} else {
 			throw new MathParserException("Variable not found: " + name, this
 					.toString());
@@ -183,6 +186,7 @@ public class EvaluationTree {
 
 	/**
 	 * Parse a function part and produce a Evaluation node that represents it
+	 * This is where the hard work is done :)
 	 * 
 	 * @param functionPtr
 	 *            The function part to be parsed
@@ -265,7 +269,8 @@ public class EvaluationTree {
 				}
 			} else if (currentChar == '(') {
 				/*
-				 * Bracket was found indicating a probable unary operator
+				 * Bracket was found indicating a probable unary operator before
+				 * it, e.g. sin, cos, -, etc
 				 */
 				if (funcStrIndex != 0) {
 					/*
@@ -277,8 +282,7 @@ public class EvaluationTree {
 						/*
 						 * Create unary operator only if the found one is not
 						 * located in brackets and a binary operator does not
-						 * already exist. Also don't set if there is currently a
-						 * unary operator of higher precedence.
+						 * already exist.
 						 */
 						String unaryOp = functionPtr.substring(lastOpPos,
 								funcStrIndex);
@@ -290,6 +294,10 @@ public class EvaluationTree {
 								precedentOpPos = funcStrIndex;
 							} else if (tempUniOperator.getPrecedence() > uniOperator
 									.getPrecedence()) {
+								/*
+								 * Don't set if there is currently a unary
+								 * operator of higher precedence
+								 */
 								uniOperator = tempUniOperator;
 								precedentOpPos = funcStrIndex;
 							}
@@ -301,8 +309,8 @@ public class EvaluationTree {
 					}
 				} else {
 					/*
-					 * If a appears as the first and last characters then the
-					 * unary operator + must be inserted to make it a valid
+					 * If brackets appears as the first and last characters then
+					 * the unary operator + must be inserted to make it a valid
 					 * operation
 					 */
 					if (charFunc[charFunc.length - 1] == ')') {

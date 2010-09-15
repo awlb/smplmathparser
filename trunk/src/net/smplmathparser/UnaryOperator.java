@@ -25,7 +25,11 @@ package net.smplmathparser;
  * 
  */
 
-public abstract class UnaryOperator extends Operator{
+public abstract class UnaryOperator extends Operator {
+	/**
+	 * Serial Version UID
+	 */
+	private static final long serialVersionUID = -1547418889170989250L;
 	/**
 	 * The string that represents this unary operator
 	 */
