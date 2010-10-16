@@ -27,8 +27,11 @@ import java.io.Serializable;
  * 
  */
 
-@SuppressWarnings("serial")
 public abstract class EvaluationNode implements Serializable {
+	/**
+	 * Serial UID
+	 */
+	private static final long serialVersionUID = 2618640894320266872L;
 	/**
 	 * Indicates whether the node has a constant value or not
 	 */

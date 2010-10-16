@@ -25,8 +25,11 @@ package net.smplmathparser;
  * 
  */
 
-@SuppressWarnings("serial")
 public class Constant extends DataValue{
+	/**
+	 * Serial UID
+	 */
+	private static final long serialVersionUID = 1501002391434699927L;
 	/**
 	 * The value for this constant
 	 */

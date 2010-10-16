@@ -25,8 +25,11 @@ package net.smplmathparser;
  * 
  */
 
-@SuppressWarnings("serial")
 public abstract class BinaryOperator extends Operator {	
+	/**
+	 * Serial UID
+	 */
+	private static final long serialVersionUID = 3523170509932566511L;
 	/**
 	 * Indicates whether this operator is also a valid unary one
 	 */
