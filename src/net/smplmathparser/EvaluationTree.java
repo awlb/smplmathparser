@@ -29,8 +29,11 @@ import java.util.Map;
  * 
  */
 
-@SuppressWarnings("serial")
 public class EvaluationTree implements Serializable {
+	/**
+	 * Serial UID
+	 */
+	private static final long serialVersionUID = 5293967236846252736L;
 	/**
 	 * The binary operators of this tree
 	 */
