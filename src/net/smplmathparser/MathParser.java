@@ -18,6 +18,7 @@
 
 package net.smplmathparser;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +29,12 @@ import java.util.Map;
  * 
  */
 
-public class MathParser {
+public class MathParser implements Serializable {
+	/**
+	 * Serial UID
+	 */
+	private static final long serialVersionUID = -1352746205327844525L;
+
 	/**
 	 * Method used to check if a string is a number
 	 * 
