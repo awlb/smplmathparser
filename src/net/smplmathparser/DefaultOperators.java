@@ -34,42 +34,42 @@ public class DefaultOperators {
 	 */
 	public static void addDefaultBinaryOperators(MathParser parser) {
 		// addition operator
-		parser.addBinaryOperator(new BinaryOperator('+', 6, true) {
+		parser.addBinaryOperator(new BinaryOperator('+', 500, true) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a + b;
 			}
 		});
 		// subtraction operator
-		parser.addBinaryOperator(new BinaryOperator('-', 6, true) {
+		parser.addBinaryOperator(new BinaryOperator('-', 500, true) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a - b;
 			}
 		});
 		// multiplication operator
-		parser.addBinaryOperator(new BinaryOperator('*', 5, false) {
+		parser.addBinaryOperator(new BinaryOperator('*', 400, false) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a * b;
 			}
 		});
 		// division operator
-		parser.addBinaryOperator(new BinaryOperator('/', 4, false) {
+		parser.addBinaryOperator(new BinaryOperator('/', 400, false) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a / b;
 			}
 		});
 		// modulus operator
-		parser.addBinaryOperator(new BinaryOperator('%', 3, false) {
+		parser.addBinaryOperator(new BinaryOperator('%', 400, false) {
 			@Override
 			public double evaluate(double a, double b) {
 				return a % b;
 			}
 		});
 		// power operator
-		parser.addBinaryOperator(new BinaryOperator('^', 2, false) {
+		parser.addBinaryOperator(new BinaryOperator('^', 300, false) {
 			@Override
 			public double evaluate(double a, double b) {
 				return Math.pow(a, b);
@@ -96,64 +96,64 @@ public class DefaultOperators {
 	 */
 	public static void addDefaultUnaryOperators(MathParser parser) {
 		// Trigonometric functions
-		parser.addUnaryOperator(new UnaryOperator("cos", 1) {
+		parser.addUnaryOperator(new UnaryOperator("cos", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.cos(a);
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("sin", 1) {
+		parser.addUnaryOperator(new UnaryOperator("sin", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.sin(a);
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("tan", 1) {
+		parser.addUnaryOperator(new UnaryOperator("tan", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.tan(a);
 			}
 		});
 		// inverse trigonometric functions
-		parser.addUnaryOperator(new UnaryOperator("acos", 1) {
+		parser.addUnaryOperator(new UnaryOperator("acos", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.acos(a);
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("asin", 1) {
+		parser.addUnaryOperator(new UnaryOperator("asin", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.asin(a);
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("atan", 1) {
+		parser.addUnaryOperator(new UnaryOperator("atan", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.atan(a);
 			}
 		});
 		// Hyperbolic trigonometric functions
-		parser.addUnaryOperator(new UnaryOperator("cosh", 1) {
+		parser.addUnaryOperator(new UnaryOperator("cosh", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.cosh(a);
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("sinh", 1) {
+		parser.addUnaryOperator(new UnaryOperator("sinh", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.sinh(a);
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("tanh", 1) {
+		parser.addUnaryOperator(new UnaryOperator("tanh", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.tanh(a);
 			}
 		});
 		// exponential operator
-		parser.addUnaryOperator(new UnaryOperator("exp", 1) {
+		parser.addUnaryOperator(new UnaryOperator("exp", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.exp(a);
