@@ -1,4 +1,4 @@
-/*	Copyright (C) 2010  Alex Barfoot
+/*	Copyright (C) 2010 - 2011  Alex Barfoot
  
  	This file is part of SimpleMathParser http://smplmathparse.sourceforge.net/.
 
@@ -160,47 +160,47 @@ public class DefaultOperators {
 			}
 		});
 		// natural log
-		parser.addUnaryOperator(new UnaryOperator("ln", 1) {
+		parser.addUnaryOperator(new UnaryOperator("ln", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.log(a);
 			}
 		});
 		// square root
-		parser.addUnaryOperator(new UnaryOperator("sqrt", 1) {
+		parser.addUnaryOperator(new UnaryOperator("sqrt", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.sqrt(a);
 			}
 		});
 		// cube root
-		parser.addUnaryOperator(new UnaryOperator("cbrt", 1) {
+		parser.addUnaryOperator(new UnaryOperator("cbrt", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.cbrt(a);
 			}
 		});
 		// log operator (log10)
-		parser.addUnaryOperator(new UnaryOperator("log", 1) {
+		parser.addUnaryOperator(new UnaryOperator("log", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.log10(a);
 			}
 		});
 		// unary sign operators
-		parser.addUnaryOperator(new UnaryOperator("-", 1) {
+		parser.addUnaryOperator(new UnaryOperator("-", 200) {
 			@Override
 			public double evaluate(double a) {
 				return -a;
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("+", 1) {
+		parser.addUnaryOperator(new UnaryOperator("+", 200) {
 			@Override
 			public double evaluate(double a) {
 				return +a;
 			}
 		});
-		parser.addUnaryOperator(new UnaryOperator("abs", 1) {
+		parser.addUnaryOperator(new UnaryOperator("abs", 200) {
 			@Override
 			public double evaluate(double a) {
 				return Math.abs(a);

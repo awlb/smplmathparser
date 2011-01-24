@@ -1,4 +1,4 @@
-/*	Copyright (C) 2010  Alex Barfoot
+/*	Copyright (C) 2010 - 2011  Alex Barfoot
  
  	This file is part of SimpleMathParser http://smplmathparse.sourceforge.net/.
 
